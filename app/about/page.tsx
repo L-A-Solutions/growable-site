@@ -31,7 +31,7 @@ const team: Person[] = [
     ],
     education: [
       {
-        degree: "M.Sc Informationssystem",
+        degree: "B.Sc Informationssystem",
         school: "Uppsala universitet",
         year: "2024 – nu",
       },
@@ -58,17 +58,17 @@ const team: Person[] = [
     ],
     education: [
       {
-        degree: "M.Sc Informationssystem",
+        degree: "B.Sc Informationssystem",
         school: "Mid-Sweden University",
         year: "2025 – nuvarande",
       },
     ],
     experience: [
       {
-        title: "Professional Jorker",
-        place: "Förskolor, Dagis",
+        title: "",
+        place: "F",
         period: "2007 – nu",
-        description: "Jorkade offentligt.",
+        description: "",
       },
     ],
   },
