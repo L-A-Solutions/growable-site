@@ -19,55 +19,56 @@ type Person = {
 const team: Person[] = [
   {
     name: "Alfred Arvidsson",
-    role: "Co-founder",
-    bio: "Alfred is a second-year student at Uppsala University with a strong interest in coding and solving problems.  ",
-    linkedin: "https://linkedin.com/in/alfred-arvidsson",
+    role: "Medgrundare",
+    bio: "Alfred är en andrårsstudent vid Uppsala universitet med ett starkt intresse för kodning och problemlösning.",
+    linkedin: "https://linkedin.com/in/arvidssonalfred",
     photo: "/images/alfred_crop.JPG",
     expertise: [
-      "Web Design",
-      "Frontend Development",
-      "Update with your skills",
+      "Webbdesign",
+      "Frontendutveckling",
+      "Uppdatera med dina färdigheter",
+      "Backendutveckling"
     ],
     education: [
       {
-        degree: "M.Sc Information Systems",
-        school: "Uppsala University",
-        year: "2024 - present",
+        degree: "M.Sc Informationssystem",
+        school: "Uppsala universitet",
+        year: "2024 – nu",
       },
     ],
     experience: [
       {
         title: "DataAnnotation",
-        place: "Remote",
-        period: "2025 – present",
-        description: "Building more reliable AI models, by testing and evaluating.",
+        place: "Distans",
+        period: "2025 – nu",
+        description: "Bygger mer tillförlitliga AI-modeller genom testning och utvärdering.",
       },
     ],
   },
   {
     name: "Linus Kammonen",
-    role: "Co-founder",
-    bio: "Update this with a short intro about yourself — what you care about, what you bring to Growable, and what kind of work excites you.",
-    linkedin: "https://linkedin.com/in/linus-kammonen",
+    role: "Medgrundare",
+    bio: "Uppdatera detta med en kort introduktion om dig själv — vad du brinner för, vad du bidrar med till Growable och vilken typ av arbete som engagerar dig.",
+    linkedin: "https://linkedin.com/in/linus-kammonen-42101314b",
     photo: "/images/linus_crop.JPG",
     expertise: [
-      "Web Development",
-      "Systems & Automation",
-      "Update with your skills",
+      "Webbutveckling",
+      "System & Automatisering",
+      "Sökmotoroptimering - Google",
     ],
     education: [
       {
-        degree: "Your Degree",
-        school: "Your School",
-        year: "20XX – 20XX",
+        degree: "M.Sc Informationssystem",
+        school: "Mid-Sweden University",
+        year: "2025 – nuvarande",
       },
     ],
     experience: [
       {
-        title: "Your Role",
-        place: "Where you worked / studied / built",
-        period: "20XX – present",
-        description: "Describe what you did here.",
+        title: "Professional Jorker",
+        place: "Förskolor, Dagis",
+        period: "2007 – nu",
+        description: "Jorkade offentligt.",
       },
     ],
   },
@@ -107,7 +108,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
           href={person.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${person.name} on LinkedIn`}
+          aria-label={`${person.name} på LinkedIn`}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass border border-white/10 text-xs text-white/40 hover:text-white/70 hover:border-white/20 transition-all duration-200 cursor-pointer flex-shrink-0"
         >
           <Linkedin className="w-3.5 h-3.5" strokeWidth={1.8} />
@@ -116,19 +117,15 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
       </div>
 
       <div className="p-7 grid md:grid-cols-2 gap-8">
-        {/* Left column */}
+        {/* Left */}
         <div className="flex flex-col gap-7">
-          {/* Bio */}
-          <div>
-            <p className="text-sm text-white/45 leading-relaxed">{person.bio}</p>
-          </div>
+          <p className="text-sm text-white/45 leading-relaxed">{person.bio}</p>
 
-          {/* Expertise */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Wrench className="w-3.5 h-3.5 text-white/25" strokeWidth={1.8} />
               <span className="text-[11px] font-semibold tracking-wider uppercase text-white/25">
-                Expertise
+                Kompetenser
               </span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -144,14 +141,13 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
           </div>
         </div>
 
-        {/* Right column */}
+        {/* Right */}
         <div className="flex flex-col gap-7">
-          {/* Education */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <GraduationCap className="w-3.5 h-3.5 text-white/25" strokeWidth={1.8} />
               <span className="text-[11px] font-semibold tracking-wider uppercase text-white/25">
-                Education
+                Utbildning
               </span>
             </div>
             <div className="flex flex-col gap-3">
@@ -169,12 +165,11 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
             </div>
           </div>
 
-          {/* Experience */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Briefcase className="w-3.5 h-3.5 text-white/25" strokeWidth={1.8} />
               <span className="text-[11px] font-semibold tracking-wider uppercase text-white/25">
-                Experience
+                Erfarenhet
               </span>
             </div>
             <div className="flex flex-col gap-4">
@@ -207,7 +202,6 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
 export default function AboutPage() {
   return (
     <div className="pt-28 pb-24 overflow-hidden">
-      {/* Subtle glow */}
       <div
         className="pointer-events-none fixed inset-x-0 top-0 h-[400px] -z-10"
         aria-hidden="true"
@@ -218,7 +212,6 @@ export default function AboutPage() {
       />
 
       <div className="max-w-4xl mx-auto px-4">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -226,28 +219,26 @@ export default function AboutPage() {
           className="mb-14"
         >
           <span className="text-[11px] font-medium tracking-widest uppercase text-white/25 mb-3 block">
-            Who we are
+            Vilka vi är
           </span>
           <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gradient leading-tight mb-4">
-            Two students building
+            Två studenter som bygger
             <br />
-            <span className="text-gradient-pink">real things for real businesses.</span>
+            <span className="text-gradient-pink">riktiga saker för riktiga företag.</span>
           </h1>
           <p className="text-sm text-white/40 max-w-md leading-relaxed">
-            Growable is Alfred and Linus. We started this because we wanted to
-            do work that actually matters — helping local and small businesses
-            show up online properly, without overcomplicating it.
+            Growable är Alfred och Linus. Vi startade det här för att vi ville
+            göra arbete som faktiskt spelar roll — hjälpa lokala och små företag
+            att synas ordentligt på nätet, utan att krångla till det.
           </p>
         </motion.div>
 
-        {/* Profile cards */}
         <div className="flex flex-col gap-5 mb-14">
           {team.map((person, i) => (
             <PersonCard key={person.name} person={person} index={i} />
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -257,17 +248,17 @@ export default function AboutPage() {
         >
           <div>
             <h3 className="text-base font-semibold text-white mb-1">
-              Want to work with us?
+              Vill du jobba med oss?
             </h3>
             <p className="text-sm text-white/40">
-              We&apos;d love to hear about your project.
+              Vi vill gärna höra mer om ditt projekt.
             </p>
           </div>
           <Link
             href="/contact"
             className="group flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-door text-[#0A0A0A] text-sm font-semibold hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer"
           >
-            Get in touch
+            Kom igång
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
         </motion.div>

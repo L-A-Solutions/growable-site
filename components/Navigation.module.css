@@ -1,0 +1,227 @@
+.header {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 50;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 64rem;
+}
+
+.nav {
+  border-radius: 1rem;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.navScrolled {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  flex: 1;
+}
+
+.logoIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  background: rgba(242, 167, 181, 0.1);
+  border: 1px solid rgba(242, 167, 181, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  color: #F2A7B5;
+}
+
+.logo:hover .logoIcon {
+  background: rgba(242, 167, 181, 0.2);
+}
+
+.logoText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+/* Desktop links */
+.links {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .links {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.linkActive {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.activePill {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Right side */
+.right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cta {
+  display: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  background: #F2A7B5;
+  color: #0A0A0A;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: #E8849A;
+}
+
+@media (min-width: 768px) {
+  .cta {
+    display: block;
+  }
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  padding: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.hamburger:hover {
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Mobile menu */
+.mobileMenu {
+  position: fixed;
+  top: 5rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.mobileLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.mobileLink:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobileLinkActive {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobileDivider {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobileCta {
+  display: block;
+  text-align: center;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  background: #F2A7B5;
+  color: #0A0A0A;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.mobileCta:hover {
+  background: #E8849A;
+}

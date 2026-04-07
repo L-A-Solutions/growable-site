@@ -5,12 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
+import styles from "./Navigation.module.css";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Hem" },
+  { href: "/services", label: "Tjänster" },
+  { href: "/about", label: "Om oss" },
+  { href: "/contact", label: "Kontakt" },
 ];
 
 export default function Navigation() {
@@ -24,7 +25,6 @@ export default function Navigation() {
     const handler = () => {
       const y = window.scrollY;
       setScrolled(y > 20);
-      // Hide when scrolling down past 80px, show when scrolling up
       if (y > 80) {
         setVisible(y < lastY.current);
       } else {
@@ -46,67 +46,52 @@ export default function Navigation() {
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: visible ? 0 : -80, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl"
+        className={styles.header}
       >
-        <nav
-          className={`rounded-2xl px-5 py-3 flex items-center transition-all duration-300 ${
-            scrolled
-              ? "glass border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              : "bg-transparent border border-transparent"
-          }`}
-        >
-          {/* Logo — left, takes up 1/3 */}
-          <div className="flex-1 flex items-center">
-            <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-              <div className="w-7 h-7 rounded-lg bg-pink-door/10 border border-pink-door/30 flex items-center justify-center group-hover:bg-pink-door/20 transition-colors duration-200">
-                <Zap className="w-3.5 h-3.5 text-pink-door" strokeWidth={2.5} />
-              </div>
-              <span className="font-semibold text-sm tracking-tight text-white">
-                Growable
-              </span>
-            </Link>
-          </div>
+        <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
+          {/* Logo */}
+          <Link href="/" className={styles.logo}>
+            <div className={styles.logoIcon}>
+              <Zap width={14} height={14} strokeWidth={2.5} />
+            </div>
+            <span className={styles.logoText}>Growable</span>
+          </Link>
 
-          {/* Desktop links — center */}
-          <ul className="hidden md:flex items-center gap-1">
+          {/* Desktop links */}
+          <ul className={styles.links}>
             {navLinks.map(({ href, label }) => {
               const active = pathname === href;
               return (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`relative px-4 py-2 text-sm rounded-xl transition-colors duration-200 cursor-pointer ${
-                      active ? "text-white font-medium" : "text-white/50 hover:text-white/80"
-                    }`}
+                    className={`${styles.link} ${active ? styles.linkActive : ""}`}
                   >
                     {active && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 bg-white/8 rounded-xl border border-white/10"
+                        className={styles.activePill}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
                       />
                     )}
-                    <span className="relative z-10">{label}</span>
+                    <span style={{ position: "relative", zIndex: 1 }}>{label}</span>
                   </Link>
                 </li>
               );
             })}
           </ul>
 
-          {/* CTA + hamburger — right, takes up 1/3 */}
-          <div className="flex-1 flex items-center justify-end">
-            <Link
-              href="/contact"
-              className="hidden md:block px-4 py-2 text-sm font-medium rounded-xl bg-pink-door text-[#0A0A0A] hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer whitespace-nowrap"
-            >
-              Get in touch
+          {/* Right: CTA + hamburger */}
+          <div className={styles.right}>
+            <Link href="/contact" className={styles.cta}>
+              Kom igång
             </Link>
             <button
-              className="md:hidden p-2 text-white/60 hover:text-white transition-colors cursor-pointer"
+              className={styles.hamburger}
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-label={menuOpen ? "Stäng meny" : "Öppna meny"}
             >
-              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {menuOpen ? <X width={20} height={20} /> : <Menu width={20} height={20} />}
             </button>
           </div>
         </nav>
@@ -120,30 +105,23 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-4 right-4 z-40 glass rounded-2xl border border-white/10 p-4 md:hidden"
+            className={styles.mobileMenu}
           >
-            <ul className="flex flex-col gap-1">
+            <ul className={styles.mobileLinks}>
               {navLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`block px-4 py-3 text-sm rounded-xl transition-colors cursor-pointer ${
-                      pathname === href
-                        ? "text-white bg-white/8"
-                        : "text-white/60 hover:text-white hover:bg-white/5"
-                    }`}
+                    className={`${styles.mobileLink} ${pathname === href ? styles.mobileLinkActive : ""}`}
                   >
                     {label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="mt-3 pt-3 border-t border-white/8">
-              <Link
-                href="/contact"
-                className="block text-center px-4 py-2.5 text-sm font-medium rounded-xl bg-pink-door text-[#0A0A0A] hover:bg-pink-door-dark transition-colors cursor-pointer"
-              >
-                Get in touch
+            <div className={styles.mobileDivider}>
+              <Link href="/contact" className={styles.mobileCta}>
+                Kom igång
               </Link>
             </div>
           </motion.div>

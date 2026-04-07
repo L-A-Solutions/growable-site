@@ -11,87 +11,86 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
-import type { Metadata } from "next";
 
 const services = [
   {
     id: "websites",
     icon: Globe,
-    label: "Website Design & Build",
+    label: "Webbdesign & Utveckling",
     accent: "#F2A7B5",
-    tagline: "Your corner of the internet, done properly.",
+    tagline: "Din plats på nätet, gjord ordentligt.",
     description:
-      "We design and build websites that look great, load fast, and work on every device. Whether you need a simple one-pager or a full multi-page site, we build it from scratch — no templates, no shortcuts.",
+      "Vi designar och bygger hemsidor som ser bra ut, laddar snabbt och fungerar på alla enheter. Oavsett om du behöver en enkel sida eller en fullständig flersidessajt bygger vi den från grunden — inga mallar, inga genvägar.",
     includes: [
-      "Custom design tailored to your brand",
-      "Mobile-first, responsive layout",
-      "Fast load times out of the box",
-      "Contact forms and basic integrations",
-      "Launch-ready in 1–2 weeks",
+      "Anpassad design utifrån ditt varumärke",
+      "Mobilanpassad layout",
+      "Snabba laddningstider från start",
+      "Kontaktformulär och grundläggande integrationer",
+      "Klar att lansera inom 1–2 veckor",
     ],
   },
   {
     id: "hosting",
     icon: Server,
-    label: "Hosting & Maintenance",
+    label: "Hosting & Underhåll",
     accent: "#a5f3b0",
-    tagline: "Always online. Always up to date.",
+    tagline: "Alltid online. Alltid uppdaterad.",
     description:
-      "We host your site on reliable infrastructure and handle all the technical upkeep — security patches, software updates, backups, and minor content changes. You focus on your business.",
+      "Vi hostar din sajt på pålitlig infrastruktur och sköter allt tekniskt underhåll — säkerhetsuppdateringar, säkerhetskopior och mindre innehållsändringar. Du fokuserar på ditt företag.",
     includes: [
-      "Managed hosting setup",
-      "SSL certificate included",
-      "Regular backups",
-      "Security & software updates",
-      "Small content changes on request",
+      "Hanterad hosting",
+      "SSL-certifikat ingår",
+      "Regelbundna säkerhetskopior",
+      "Säkerhets- och programvaruuppdateringar",
+      "Mindre innehållsändringar på begäran",
     ],
   },
   {
     id: "seo",
     icon: Search,
-    label: "Online Visibility",
+    label: "Synlighet på nätet",
     accent: "#93c5fd",
-    tagline: "Show up when people search for you.",
+    tagline: "Syns när folk söker efter dig.",
     description:
-      "We give your site a solid SEO foundation and set up your Google Business profile — the basics that actually make a difference for local businesses trying to get found.",
+      "Vi ger din sajt en solid SEO-grund och sätter upp din Google Business-profil — det grundläggande som faktiskt gör skillnad för lokala företag som vill synas.",
     includes: [
-      "On-page SEO (titles, meta, structure)",
-      "Google Business Profile setup",
-      "Image optimisation & alt text",
-      "Sitemap & robots.txt",
-      "Basic performance for search ranking",
+      "On-page SEO (titlar, meta, struktur)",
+      "Google Business-profil setup",
+      "Bildoptimering och alt-text",
+      "Sitemap och robots.txt",
+      "Grundläggande prestanda för sökmotorrankning",
     ],
   },
   {
     id: "support",
     icon: Headphones,
-    label: "Ongoing Support",
+    label: "Löpande Support",
     accent: "#fcd34d",
-    tagline: "We pick up the phone.",
+    tagline: "Vi svarar i telefon.",
     description:
-      "Got a question? Need to update something? Just reach out. We reply fast and fix things without making it complicated. No ticket system, no waiting in a queue — just two people who care.",
+      "Har du en fråga? Behöver du uppdatera något? Hör av dig. Vi svarar snabbt och löser saker utan att göra det krångligt. Inget ärendesystem, ingen kö — bara två personer som bryr sig.",
     includes: [
-      "Direct contact via phone, email, or text",
-      "Quick response times",
-      "Content and copy updates",
-      "Bug fixes",
-      "Advice on what to do next",
+      "Direktkontakt via telefon, e-post eller SMS",
+      "Snabba svarstider",
+      "Innehålls- och textuppdateringar",
+      "Buggfixar",
+      "Råd om vad du bör göra härnäst",
     ],
   },
   {
     id: "systems",
     icon: Cpu,
-    label: "Systems & Automation",
+    label: "System & Automatisering",
     accent: "#c4b5fd",
-    tagline: "Cut the admin, keep the focus.",
+    tagline: "Mindre admin, mer fokus.",
     description:
-      "If you're spending hours on repetitive tasks, we can help. We set up simple tools — booking forms, automated email replies, CRM connections — that save you time without the complexity.",
+      "Lägger du timmar på repetitivt arbete kan vi hjälpa till. Vi sätter upp enkla verktyg — bokningsformulär, automatiska e-postsvar, CRM-kopplingar — som sparar tid utan att bli komplicerade.",
     includes: [
-      "Booking and enquiry form automation",
-      "Email autoresponders",
-      "CRM integrations (e.g. Notion, HubSpot)",
-      "Simple AI tools for content or responses",
-      "Custom to your workflow",
+      "Automatisering av boknings- och förfrågningsformulär",
+      "Automatiska e-postsvar",
+      "CRM-integrationer (t.ex. Notion, HubSpot)",
+      "Enkla AI-verktyg för innehåll eller svar",
+      "Anpassat till ditt arbetsflöde",
     ],
   },
 ];
@@ -125,7 +124,7 @@ export default function ServicesPage() {
           className="mb-7"
         >
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-xs text-white/45">
-            What we do
+            Vad vi gör
           </span>
         </motion.div>
 
@@ -135,9 +134,9 @@ export default function ServicesPage() {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-gradient leading-tight mb-5"
         >
-          Everything your business
+          Allt ditt företag behöver
           <br />
-          <span className="text-gradient-pink">needs to be online.</span>
+          <span className="text-gradient-pink">för att synas på nätet.</span>
         </motion.h1>
 
         <motion.p
@@ -146,8 +145,8 @@ export default function ServicesPage() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-sm text-white/40 max-w-sm mx-auto leading-relaxed mb-8"
         >
-          We keep it straightforward. Here&apos;s exactly what we offer, what&apos;s
-          included, and how we work.
+          Vi håller det enkelt. Här är exakt vad vi erbjuder, vad som ingår och
+          hur vi arbetar.
         </motion.p>
 
         <motion.div
@@ -159,7 +158,7 @@ export default function ServicesPage() {
             href="/contact"
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-door text-[#0A0A0A] text-sm font-semibold hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer"
           >
-            Talk to us
+            Prata med oss
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
         </motion.div>
@@ -180,7 +179,6 @@ export default function ServicesPage() {
               viewport={{ once: true, margin: "-50px" }}
               className="glass rounded-2xl p-7 md:p-8 grid md:grid-cols-2 gap-7 items-start"
             >
-              {/* Left */}
               <div>
                 <div className="flex items-center gap-3 mb-5">
                   <div
@@ -193,11 +191,9 @@ export default function ServicesPage() {
                       strokeWidth={1.8}
                     />
                   </div>
-                  <div>
-                    <span className="text-[11px] font-medium tracking-wider uppercase text-white/25 block">
-                      {svc.label}
-                    </span>
-                  </div>
+                  <span className="text-[11px] font-medium tracking-wider uppercase text-white/25">
+                    {svc.label}
+                  </span>
                 </div>
 
                 <h2 className="text-lg font-semibold text-white mb-3 leading-snug">
@@ -206,10 +202,9 @@ export default function ServicesPage() {
                 <p className="text-sm text-white/40 leading-relaxed">{svc.description}</p>
               </div>
 
-              {/* Right — what's included */}
               <div>
                 <span className="text-[11px] font-semibold tracking-wider uppercase text-white/20 mb-4 block">
-                  What&apos;s included
+                  Vad som ingår
                 </span>
                 <ul className="flex flex-col gap-3">
                   {svc.includes.map((item) => (
@@ -246,17 +241,17 @@ export default function ServicesPage() {
             }}
           />
           <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3 leading-tight">
-            Not sure what you need?
+            Osäker på vad du behöver?
           </h2>
           <p className="text-sm text-white/40 mb-7 max-w-xs mx-auto leading-relaxed">
-            Just reach out. We&apos;ll have a quick chat and figure out the right
-            starting point together.
+            Hör av dig. Vi tar ett snabbt samtal och räknar ut rätt startpunkt
+            tillsammans.
           </p>
           <Link
             href="/contact"
             className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pink-door text-[#0A0A0A] text-sm font-semibold hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer"
           >
-            Get in touch
+            Kontakta oss
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
         </motion.div>
