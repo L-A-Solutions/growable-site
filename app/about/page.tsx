@@ -22,7 +22,7 @@ const team: Person[] = [
     role: "Co-founder",
     bio: "Alfred is a second-year student at Uppsala University with a strong interest in coding and solving problems.  ",
     linkedin: "https://linkedin.com/in/alfred-arvidsson",
-    photo: "/images/alfred.jpg",
+    photo: "/images/alfred_crop.JPG",
     expertise: [
       "Web Design",
       "Frontend Development",
@@ -49,7 +49,7 @@ const team: Person[] = [
     role: "Co-founder",
     bio: "Update this with a short intro about yourself — what you care about, what you bring to Growable, and what kind of work excites you.",
     linkedin: "https://linkedin.com/in/linus-kammonen",
-    photo: "/images/linus.jpg",
+    photo: "/images/linus_crop.JPG",
     expertise: [
       "Web Development",
       "Systems & Automation",
@@ -85,13 +85,14 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
       {/* Header */}
       <div className="p-7 border-b border-white/6 flex items-start justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 flex-shrink-0 relative">
+          <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 flex-shrink-0">
             <Image
               src={person.photo}
               alt={person.name}
-              fill
-              className="object-cover "
-              sizes="56px"
+              width={192}
+              height={192}
+              quality={100}
+              className="object-cover w-full h-full"
             />
           </div>
           <div>

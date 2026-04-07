@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,11 +15,23 @@ const navLinks = [
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const lastY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      // Hide when scrolling down past 80px, show when scrolling up
+      if (y > 80) {
+        setVisible(y < lastY.current);
+      } else {
+        setVisible(true);
+      }
+      lastY.current = y;
+    };
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -32,28 +44,30 @@ export default function Navigation() {
     <>
       <motion.header
         initial={{ y: -16, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        animate={{ y: visible ? 0 : -80, opacity: visible ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl"
       >
         <nav
-          className={`rounded-2xl px-5 py-3 flex items-center justify-between transition-all duration-300 ${
+          className={`rounded-2xl px-5 py-3 flex items-center transition-all duration-300 ${
             scrolled
               ? "glass border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
               : "bg-transparent border border-transparent"
           }`}
         >
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-7 h-7 rounded-lg bg-pink-door/10 border border-pink-door/30 flex items-center justify-center group-hover:bg-pink-door/20 transition-colors duration-200">
-              <Zap className="w-3.5 h-3.5 text-pink-door" strokeWidth={2.5} />
-            </div>
-            <span className="font-semibold text-sm tracking-tight text-white">
-              Growable
-            </span>
-          </Link>
+          {/* Logo — left, takes up 1/3 */}
+          <div className="flex-1 flex items-center">
+            <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+              <div className="w-7 h-7 rounded-lg bg-pink-door/10 border border-pink-door/30 flex items-center justify-center group-hover:bg-pink-door/20 transition-colors duration-200">
+                <Zap className="w-3.5 h-3.5 text-pink-door" strokeWidth={2.5} />
+              </div>
+              <span className="font-semibold text-sm tracking-tight text-white">
+                Growable
+              </span>
+            </Link>
+          </div>
 
-          {/* Desktop links */}
+          {/* Desktop links — center */}
           <ul className="hidden md:flex items-center gap-1">
             {navLinks.map(({ href, label }) => {
               const active = pathname === href;
@@ -62,9 +76,7 @@ export default function Navigation() {
                   <Link
                     href={href}
                     className={`relative px-4 py-2 text-sm rounded-xl transition-colors duration-200 cursor-pointer ${
-                      active
-                        ? "text-white font-medium"
-                        : "text-white/50 hover:text-white/80"
+                      active ? "text-white font-medium" : "text-white/50 hover:text-white/80"
                     }`}
                   >
                     {active && (
@@ -81,24 +93,22 @@ export default function Navigation() {
             })}
           </ul>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* CTA + hamburger — right, takes up 1/3 */}
+          <div className="flex-1 flex items-center justify-end">
             <Link
               href="/contact"
-              className="px-4 py-2 text-sm font-medium rounded-xl bg-pink-door text-[#0A0A0A] hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer"
+              className="hidden md:block px-4 py-2 text-sm font-medium rounded-xl bg-pink-door text-[#0A0A0A] hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer whitespace-nowrap"
             >
               Get in touch
             </Link>
+            <button
+              className="md:hidden p-2 text-white/60 hover:text-white transition-colors cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
-
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden p-2 text-white/60 hover:text-white transition-colors cursor-pointer"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
         </nav>
       </motion.header>
 
