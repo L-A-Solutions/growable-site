@@ -10,7 +10,8 @@ const links = {
   Company: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
-    { label: "The Door", href: "/contact" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ],
   Services: [
     { label: "Website Design", href: "/services#websites" },
