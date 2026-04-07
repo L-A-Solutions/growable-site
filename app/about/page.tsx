@@ -26,8 +26,8 @@ const team: Person[] = [
     expertise: [
       "Webbdesign",
       "Frontendutveckling",
-      "Uppdatera med dina färdigheter",
-      "Backendutveckling"
+      "Backendutveckling",
+      
     ],
     education: [
       {
@@ -55,6 +55,7 @@ const team: Person[] = [
       "Webbutveckling",
       "System & Automatisering",
       "Sökmotoroptimering - Google",
+      
     ],
     education: [
       {
@@ -66,7 +67,7 @@ const team: Person[] = [
     experience: [
       {
         title: "",
-        place: "F",
+        place: "",
         period: "2007 – nu",
         description: "",
       },
