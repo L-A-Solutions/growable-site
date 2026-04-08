@@ -1,12 +1,51 @@
 .section {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 1rem 4rem;
-  overflow: visible;
+  padding: 8rem 1rem 4rem;
+  overflow: hidden;
+}
+
+/* Video container — fills the hero, fades out via JS */
+.videoBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: opacity;
+  transition: opacity 0.05s linear;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  transition: opacity 1.5s ease;
+}
+
+/* Dark radial vignette — heaviest in the center where text lives,
+   thins toward the edges so the video breathes through the corners */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 50% 50%,
+      rgba(10, 10, 10, 0.82) 0%,
+      rgba(10, 10, 10, 0.55) 45%,
+      rgba(10, 10, 10, 0.15) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 60%,
+      rgba(10, 10, 10, 0.7) 80%,
+      #0A0A0A 100%
+    );
 }
 
 .content {
@@ -15,19 +54,6 @@
   align-items: center;
   position: relative;
   z-index: 1;
-}
-
-.glow {
-  pointer-events: none;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(18, 43, 20, 0.45) 0%, transparent 75%);
-  filter: blur(50px);
 }
 
 .badge {
@@ -40,13 +66,12 @@
   gap: 0.5rem;
   padding: 0.375rem 0.75rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
 }
 
-/* Ensure text content sits above the chart */
 .badge,
 .headline,
 .subheading,
@@ -75,7 +100,7 @@
 }
 
 .gradientWhite {
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.88) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -93,7 +118,7 @@
   text-align: center;
   max-width: 28rem;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
 }
 
@@ -133,9 +158,9 @@
 .ctaSecondary {
   padding: 0.625rem 1.25rem;
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.875rem;
   text-decoration: none;
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -144,7 +169,7 @@
 
 .ctaSecondary:hover {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .pillars {
@@ -167,13 +192,13 @@
   gap: 0.625rem;
   padding: 0.625rem 1rem;
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .pillarIcon {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.55);
   flex-shrink: 0;
 }

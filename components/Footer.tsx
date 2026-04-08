@@ -46,7 +46,7 @@ export default function Footer() {
               <div className={styles.logoIcon}>
                 <Zap width={14} height={14} strokeWidth={2.5} />
               </div>
-              <span className={styles.logoText}>Growable</span>
+              <span className={styles.logoText}>Avtryck Digital.</span>
             </Link>
             <p className={styles.brandDesc}>
               Webbdesign, hosting och synlighet för småföretag.
@@ -81,7 +81,7 @@ export default function Footer() {
           className={styles.bottom}
         >
           <span className={styles.copyright}>
-            © {new Date().getFullYear()} Growable. Alla rättigheter förbehållna.
+            © {new Date().getFullYear()} Avtryck Digital. Alla rättigheter förbehållna.
           </span>
           <span className={styles.tagline}>
             Två studenter. Riktiga hemsidor. Schyssta priser.

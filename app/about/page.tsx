@@ -48,7 +48,7 @@ const team: Person[] = [
   {
     name: "Linus Kammonen",
     role: "Medgrundare",
-    bio: "Uppdatera detta med en kort introduktion om dig själv — vad du brinner för, vad du bidrar med till Growable och vilken typ av arbete som engagerar dig.",
+    bio: "Uppdatera detta med en kort introduktion om dig själv — vad du brinner för, vad du bidrar med till Avtryck Digital och vilken typ av arbete som engagerar dig.",
     linkedin: "https://linkedin.com/in/linus-kammonen-42101314b",
     photo: "/images/linus_crop.JPG",
     expertise: [
@@ -228,7 +228,7 @@ export default function AboutPage() {
             <span className="text-gradient-pink">riktiga saker för riktiga företag.</span>
           </h1>
           <p className="text-sm text-white/40 max-w-md leading-relaxed">
-            Growable är Alfred och Linus. Vi startade det här för att vi ville
+            Avtryck Digital är Alfred och Linus. Vi startade det här för att vi ville
             göra arbete som faktiskt spelar roll — hjälpa lokala och små företag
             att synas ordentligt på nätet, utan att krångla till det.
           </p>

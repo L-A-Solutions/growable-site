@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import AnimatedBackground from "@/components/AnimatedBackground";
 
 export const metadata: Metadata = {
   title: {
-    default: "Growable — Hemsidor åt företag",
-    template: "%s | Growable",
+    default: "Avtryck Digital — Hemsidor åt företag",
+    template: "%s | Avtryck Digital",
   },
   description:
     "Vi designar och bygger snabba, professionella hemsidor för småföretag. Hosting, support och synlighet på nätet ingår. Baserade i Sverige.",
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "sv_SV",
-    siteName: "Growable",
+    siteName: "Avtryck Digital",
   },
 };
 
@@ -36,7 +35,6 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="bg-background text-white antialiased">
-        <AnimatedBackground />
         <Navigation />
         <main>{children}</main>
         <Footer />

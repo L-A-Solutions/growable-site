@@ -1,21 +1,92 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, Monitor, Headphones, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import styles from "./Hero.module.css";
-import GrowthChart from "./GrowthChart";
 
-const pillars = [
-  { icon: Monitor, label: "Hemsidor som konverterar" },
-  { icon: Headphones, label: "Riktig support, riktiga människor" },
-  { icon: Zap, label: "Snabb leverans" },
-];
+
+const CROSSFADE = 1.5; // seconds before end to start crossfade
 
 export default function Hero() {
+  const bgRef = useRef<HTMLDivElement>(null);
+  const vid1Ref = useRef<HTMLVideoElement>(null);
+  const vid2Ref = useRef<HTMLVideoElement>(null);
+
+  // Scroll fade
+  useEffect(() => {
+    const onScroll = () => {
+      if (!bgRef.current) return;
+      const heroH = bgRef.current.parentElement?.offsetHeight ?? window.innerHeight;
+      const progress = Math.min(window.scrollY / (heroH * 0.6), 1);
+      bgRef.current.style.opacity = String(1 - progress);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Crossfade loop
+  useEffect(() => {
+    const v1 = vid1Ref.current;
+    const v2 = vid2Ref.current;
+    if (!v1 || !v2) return;
+
+    let fading = false;
+
+    const check = (e: Event) => {
+      const active = e.target as HTMLVideoElement;
+      const inactive = active === v1 ? v2 : v1;
+      if (!active.duration || fading) return;
+
+      const remaining = active.duration - active.currentTime;
+      if (remaining <= CROSSFADE) {
+        fading = true;
+        inactive.currentTime = 0;
+        inactive.play().catch(() => {});
+        inactive.style.opacity = "0.4";
+        active.style.opacity = "0";
+
+        setTimeout(() => {
+          active.pause();
+          active.currentTime = 0;
+          fading = false;
+        }, CROSSFADE * 1000 + 200);
+      }
+    };
+
+    v1.addEventListener("timeupdate", check);
+    v2.addEventListener("timeupdate", check);
+    return () => {
+      v1.removeEventListener("timeupdate", check);
+      v2.removeEventListener("timeupdate", check);
+    };
+  }, []);
+
   return (
     <section className={styles.section}>
-      {/* Single entrance animation wrapping all content */}
+      {/* Video background — fades out on scroll */}
+      <div ref={bgRef} className={styles.videoBg}>
+        <video
+          ref={vid1Ref}
+          className={styles.video}
+          src="/bg.mp4"
+          autoPlay
+          muted
+          playsInline
+          style={{ opacity: 0.4 }}
+        />
+        <video
+          ref={vid2Ref}
+          className={styles.video}
+          src="/bg.mp4"
+          muted
+          playsInline
+          style={{ opacity: 0 }}
+        />
+        <div className={styles.vignette} />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -50,17 +121,7 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className={styles.pillars}>
-          {pillars.map(({ icon: Icon, label }) => (
-            <div key={label} className={styles.pillar}>
-              <Icon width={16} height={16} className={styles.pillarIcon} strokeWidth={1.8} />
-              {label}
-            </div>
-          ))}
-        </div>
       </motion.div>
-
-      <GrowthChart />
     </section>
   );
 }

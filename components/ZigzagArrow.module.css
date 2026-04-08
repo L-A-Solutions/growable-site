@@ -1,0 +1,41 @@
+.wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 420px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+.line {
+  stroke-dasharray: 1390;
+  stroke-dashoffset: 1390;
+  animation: drawLine 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+.head {
+  opacity: 0;
+  animation: fadeIn 0.4s ease 3s forwards;
+}
+
+.area {
+  opacity: 0;
+  animation: fadeIn 0.8s ease 2.8s forwards;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line { animation: none; stroke-dashoffset: 0; }
+  .head { animation: none; opacity: 1; }
+  .area { animation: none; opacity: 1; }
+}

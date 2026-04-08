@@ -51,10 +51,7 @@ export default function Navigation() {
         <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoIcon}>
-              <Zap width={14} height={14} strokeWidth={2.5} />
-            </div>
-            <span className={styles.logoText}>Growable</span>
+            <span className={styles.logoText}>Avtryck Digital.</span>
           </Link>
 
           {/* Desktop links */}
