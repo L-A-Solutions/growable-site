@@ -7,7 +7,6 @@ import {
   Search,
   Headphones,
   Cpu,
-  CheckCircle2,
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
@@ -177,48 +176,28 @@ export default function ServicesPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="glass rounded-2xl p-7 md:p-8 grid md:grid-cols-2 gap-7 items-start"
+              className="glass rounded-2xl p-7 md:p-8"
             >
-              <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/8"
-                    style={{ background: `${svc.accent}12` }}
-                  >
-                    <Icon
-                      className="w-5 h-5"
-                      style={{ color: svc.accent }}
-                      strokeWidth={1.8}
-                    />
-                  </div>
-                  <span className="text-[11px] font-medium tracking-wider uppercase text-white/55">
-                    {svc.label}
-                  </span>
+              <div className="flex items-center gap-3 mb-5">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/8"
+                  style={{ background: `${svc.accent}12` }}
+                >
+                  <Icon
+                    className="w-5 h-5"
+                    style={{ color: svc.accent }}
+                    strokeWidth={1.8}
+                  />
                 </div>
-
-                <h2 className="text-lg font-semibold text-white mb-3 leading-snug">
-                  {svc.tagline}
-                </h2>
-                <p className="text-sm text-white/75 leading-relaxed">{svc.description}</p>
-              </div>
-
-              <div>
-                <span className="text-[11px] font-semibold tracking-wider uppercase text-white/80 mb-4 block">
-                  Vad som ingår
+                <span className="text-[11px] font-medium tracking-wider uppercase text-white/55">
+                  {svc.label}
                 </span>
-                <ul className="flex flex-col gap-3">
-                  {svc.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle2
-                        className="w-4 h-4 mt-0.5 flex-shrink-0"
-                        style={{ color: svc.accent }}
-                        strokeWidth={2}
-                      />
-                      <span className="text-sm text-white/80">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
+
+              <h2 className="text-lg font-semibold text-white mb-3 leading-snug">
+                {svc.tagline}
+              </h2>
+              <p className="text-sm text-white/75 leading-relaxed">{svc.description}</p>
             </m.div>
           );
         })}
