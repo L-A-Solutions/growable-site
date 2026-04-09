@@ -113,7 +113,7 @@ export default function ServicesPage() {
           className="pointer-events-none absolute inset-x-0 top-0 h-[400px] -z-10"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 0%, rgba(18,43,20,0.35) 0%, transparent 70%)",
+              "radial-gradient(ellipse at 50% 0%, rgba(242,167,181,0.18) 0%, transparent 70%)",
           }}
         />
 
