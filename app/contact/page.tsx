@@ -64,6 +64,14 @@ export default function ContactPage() {
 
   return (
     <div className="pt-28 pb-24 overflow-hidden">
+      <div
+        className="pointer-events-none fixed inset-x-0 top-0 h-[400px] -z-10"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(242,167,181,0.09) 0%, transparent 70%)",
+        }}
+      />
       <div className="max-w-lg mx-auto px-4">
         {/* Header */}
         <m.div

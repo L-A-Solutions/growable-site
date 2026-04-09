@@ -210,7 +210,7 @@ export default function AboutPage() {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(242,167,181,0.15) 0%, transparent 70%)",
+            "radial-gradient(ellipse at 50% 0%, rgba(242,167,181,0.08) 0%, transparent 70%)",
         }}
       />
 
