@@ -34,7 +34,6 @@ const steps = [
 export default function HomeProcess() {
   return (
     <section className={styles.section}>
-      <div className={styles.divider} />
       <div className={`${styles.header} ${styles.fadeIn}`}>
         <span className={styles.eyebrow}>Så fungerar det</span>
         <h2 className={styles.title}>Enkelt från start till lansering.</h2>
@@ -52,8 +51,7 @@ export default function HomeProcess() {
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className={styles.cardTop}>
-                <span className={styles.stepNumber}>{s.step}</span>
-                <div className={styles.iconWrap} style={{ background: `${s.accent}12` }}>
+                <div className={styles.iconWrap} style={{ background: `${s.accent}18` }}>
                   <Icon width={16} height={16} style={{ color: s.accent }} strokeWidth={1.8} />
                 </div>
               </div>
@@ -65,12 +63,6 @@ export default function HomeProcess() {
             </div>
           );
         })}
-      </div>
-      <div className={styles.ctaWrap}>
-        <Link href="/contact" className={styles.cta}>
-          Kom igång
-          <ArrowRight width={16} height={16} />
-        </Link>
       </div>
     </section>
   );

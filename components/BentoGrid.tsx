@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import styles from "./BentoGrid.module.css";
 
 export default function BentoGrid() {
@@ -12,6 +14,10 @@ export default function BentoGrid() {
         Med marknadsledande startkostnader och fokus på långsiktiga relationer
         bygger vi inte bara hemsidor, utan samarbeten som håller över tid.
       </p>
+      <Link href="/contact" className={styles.cta}>
+        Kom igång
+        <ArrowRight width={16} height={16} />
+      </Link>
     </section>
   );
 }

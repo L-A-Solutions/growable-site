@@ -4,6 +4,24 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Pink cloud — bleeds into the section below for a seamless transition */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: -4rem -8rem -8rem;
+  background: radial-gradient(
+    ellipse 70% 75% at 50% 40%,
+    rgba(242, 167, 181, 0.16) 0%,
+    rgba(242, 167, 181, 0.07) 50%,
+    transparent 100%
+  );
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .title {
@@ -25,6 +43,28 @@
   margin: 0 0 1rem;
 }
 
-.body:last-child {
+.body:last-of-type {
   margin-bottom: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
