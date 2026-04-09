@@ -10,7 +10,7 @@ const steps = [
     icon: MessageSquare,
     label: "Prata med oss",
     headline: "Berätta om ditt företag.",
-    body: "Vi tar ett kort samtal eller chatt för att förstå vad du gör, vilka du riktar dig till och vad du behöver av en hemsida. Inget krångel, inget säljsnack.",
+    body: "Vi tar ett kort strategisamtal för att förstå vad du gör, vilka du riktar dig till och hur vi kan hjälpa er att synas bättre.",
     accent: "#a5f3b0",
   },
   {
@@ -26,7 +26,7 @@ const steps = [
     icon: Rocket,
     label: "Lansering & support",
     headline: "Dags att köra — vi finns kvar.",
-    body: "Vi sköter lanseringen, sätter upp hosting och finns tillgängliga för uppdateringar och frågor. Du lämnas aldrig ensam.",
+    body: "Vi sköter lanseringen, sätter upp hosting och finns tillgängliga för uppdateringar och frågor. Vi är med från lansering och lyssnar på era krav.",
     accent: "#F2A7B5",
   },
 ];
@@ -68,7 +68,7 @@ export default function HomeProcess() {
       </div>
       <div className={styles.ctaWrap}>
         <Link href="/contact" className={styles.cta}>
-          Starta ett projekt
+          Kom igång
           <ArrowRight width={16} height={16} />
         </Link>
       </div>
