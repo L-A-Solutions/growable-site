@@ -3,7 +3,7 @@
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, GraduationCap, Briefcase, Wrench, Linkedin } from "lucide-react";
+import { ArrowRight, GraduationCap, Briefcase, Linkedin, Mail, Phone } from "lucide-react";
 
 type Person = {
   name: string;
@@ -11,7 +11,8 @@ type Person = {
   bio: string;
   linkedin: string;
   photo: string;
-  expertise: string[];
+  email: string;
+  phone: string;
   education: { degree: string; school: string; year: string }[];
   experience: { title: string; place: string; period: string; description: string }[];
 };
@@ -23,13 +24,8 @@ const team: Person[] = [
     bio: "Alfred är en andrårsstudent vid Uppsala universitet med ett starkt intresse för kodning och problemlösning.",
     linkedin: "https://linkedin.com/in/arvidssonalfred",
     photo: "/images/alfred_crop.JPG",
-    expertise: [
-      "Webbdesign",
-      "Frontendutveckling",
-      "Backendutveckling",
-      "DNS & Hosting"
-      
-    ],
+    email: "alfred@avtryckdigital.se",
+    phone: "070 338 85 30",
     education: [
       {
         degree: "B.Sc Informationssystem",
@@ -52,13 +48,8 @@ const team: Person[] = [
     bio: "Uppdatera detta med en kort introduktion om dig själv — vad du brinner för, vad du bidrar med till Avtryck Digital och vilken typ av arbete som engagerar dig.",
     linkedin: "https://linkedin.com/in/linus-kammonen-42101314b",
     photo: "/images/linus_crop.JPG",
-    expertise: [
-      "Webbutveckling",
-      "System & Automatisering",
-      "Sökmotoroptimering - Google",
-      "Behovsanalys"
-      
-    ],
+    email: "linus@avtryckdigital.se",
+    phone: "070 992 79 65",
     education: [
       {
         degree: "B.Sc Informationssystem",
@@ -99,11 +90,27 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
               className="object-cover w-full h-full"
             />
           </div>
-          <div>
+          <div className="flex flex-col gap-1.5">
             <h2 className="text-lg font-semibold text-white tracking-tight">
               {person.name}
             </h2>
             <span className="text-xs text-white/65">{person.role}</span>
+            <div className="flex flex-col gap-1 mt-1">
+              <a
+                href={`mailto:${person.email}`}
+                className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white/90 transition-colors duration-200"
+              >
+                <Mail className="w-3 h-3 flex-shrink-0" strokeWidth={1.8} />
+                {person.email}
+              </a>
+              <a
+                href={`tel:${person.phone.replace(/\s/g, "")}`}
+                className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white/90 transition-colors duration-200"
+              >
+                <Phone className="w-3 h-3 flex-shrink-0" strokeWidth={1.8} />
+                {person.phone}
+              </a>
+            </div>
           </div>
         </div>
 
@@ -121,27 +128,8 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
 
       <div className="p-7 grid md:grid-cols-2 gap-8">
         {/* Left */}
-        <div className="flex flex-col gap-7">
+        <div>
           <p className="text-sm text-white/70 leading-relaxed">{person.bio}</p>
-
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Wrench className="w-3.5 h-3.5 text-white/55" strokeWidth={1.8} />
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/55">
-                Kompetenser
-              </span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {person.expertise.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/8 text-xs text-white/80"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Right */}
@@ -230,9 +218,9 @@ export default function AboutPage() {
             <span className="text-gradient-pink">riktiga saker för riktiga företag.</span>
           </h1>
           <p className="text-sm text-white/75 max-w-md leading-relaxed">
-            Avtryck Digital är Alfred och Linus. Vi startade det här för att vi ville
-            göra arbete som faktiskt spelar roll — hjälpa lokala och små företag
-            att synas ordentligt på nätet, utan att krångla till det.
+            Avtryck Digital föddes ur en vilja att utmana det traditionella.
+I ett samhälle där tekniken utvecklas snabbare än utbildningen såg vi en möjlighet att arbeta friare, närmare det som faktiskt är aktuellt.
+Det gör att vi kan bygga moderna, hållbara lösningar som ger våra kunder ett verkligt försprång online.
           </p>
         </m.div>
 
