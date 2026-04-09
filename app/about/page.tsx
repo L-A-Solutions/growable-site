@@ -129,7 +129,6 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
       <div className="p-7 flex flex-col gap-7">
         {/* Left */}
         <div>
-          <p className="text-sm text-white/70 leading-relaxed">{person.bio}</p>
         </div>
 
         {/* Right */}
