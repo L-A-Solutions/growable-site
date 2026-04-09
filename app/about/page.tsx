@@ -98,14 +98,14 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
             <div className="flex flex-col gap-1 mt-1">
               <a
                 href={`mailto:${person.email}`}
-                className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white/90 transition-colors duration-200"
+                className="flex items-center gap-1.5 text-xs text-white/80 hover:text-white transition-colors duration-200"
               >
                 <Mail className="w-3 h-3 flex-shrink-0" strokeWidth={1.8} />
                 {person.email}
               </a>
               <a
                 href={`tel:${person.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white/90 transition-colors duration-200"
+                className="flex items-center gap-1.5 text-xs text-white/80 hover:text-white transition-colors duration-200"
               >
                 <Phone className="w-3 h-3 flex-shrink-0" strokeWidth={1.8} />
                 {person.phone}
