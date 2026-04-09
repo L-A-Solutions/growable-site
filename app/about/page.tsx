@@ -103,7 +103,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
             <h2 className="text-lg font-semibold text-white tracking-tight">
               {person.name}
             </h2>
-            <span className="text-xs text-white/35">{person.role}</span>
+            <span className="text-xs text-white/65">{person.role}</span>
           </div>
         </div>
 
@@ -112,7 +112,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${person.name} på LinkedIn`}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass border border-white/10 text-xs text-white/40 hover:text-white/70 hover:border-white/20 transition-all duration-200 cursor-pointer flex-shrink-0"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass border border-white/10 text-xs text-white/75 hover:text-white/70 hover:border-white/20 transition-all duration-200 cursor-pointer flex-shrink-0"
         >
           <Linkedin className="w-3.5 h-3.5" strokeWidth={1.8} />
           LinkedIn
@@ -122,12 +122,12 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
       <div className="p-7 grid md:grid-cols-2 gap-8">
         {/* Left */}
         <div className="flex flex-col gap-7">
-          <p className="text-sm text-white/45 leading-relaxed">{person.bio}</p>
+          <p className="text-sm text-white/70 leading-relaxed">{person.bio}</p>
 
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Wrench className="w-3.5 h-3.5 text-white/25" strokeWidth={1.8} />
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/25">
+              <Wrench className="w-3.5 h-3.5 text-white/55" strokeWidth={1.8} />
+              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/55">
                 Kompetenser
               </span>
             </div>
@@ -135,7 +135,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
               {person.expertise.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/8 text-xs text-white/50"
+                  className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/8 text-xs text-white/80"
                 >
                   {skill}
                 </span>
@@ -148,8 +148,8 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
         <div className="flex flex-col gap-7">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <GraduationCap className="w-3.5 h-3.5 text-white/25" strokeWidth={1.8} />
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/25">
+              <GraduationCap className="w-3.5 h-3.5 text-white/55" strokeWidth={1.8} />
+              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/55">
                 Utbildning
               </span>
             </div>
@@ -158,9 +158,9 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
                 <div key={i} className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-sm font-medium text-white/70">{ed.degree}</p>
-                    <p className="text-xs text-white/35 mt-0.5">{ed.school}</p>
+                    <p className="text-xs text-white/65 mt-0.5">{ed.school}</p>
                   </div>
-                  <span className="text-[11px] text-white/25 flex-shrink-0 mt-0.5">
+                  <span className="text-[11px] text-white/55 flex-shrink-0 mt-0.5">
                     {ed.year}
                   </span>
                 </div>
@@ -170,8 +170,8 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
 
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Briefcase className="w-3.5 h-3.5 text-white/25" strokeWidth={1.8} />
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/25">
+              <Briefcase className="w-3.5 h-3.5 text-white/55" strokeWidth={1.8} />
+              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/55">
                 Erfarenhet
               </span>
             </div>
@@ -181,14 +181,14 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
                   <div className="flex items-start justify-between gap-4 mb-1">
                     <div>
                       <p className="text-sm font-medium text-white/70">{exp.title}</p>
-                      <p className="text-xs text-white/35">{exp.place}</p>
+                      <p className="text-xs text-white/65">{exp.place}</p>
                     </div>
-                    <span className="text-[11px] text-white/25 flex-shrink-0 mt-0.5">
+                    <span className="text-[11px] text-white/55 flex-shrink-0 mt-0.5">
                       {exp.period}
                     </span>
                   </div>
                   {exp.description && (
-                    <p className="text-xs text-white/35 leading-relaxed mt-1.5">
+                    <p className="text-xs text-white/65 leading-relaxed mt-1.5">
                       {exp.description}
                     </p>
                   )}
@@ -221,7 +221,7 @@ export default function AboutPage() {
           transition={{ duration: 0.45 }}
           className="mb-14"
         >
-          <span className="text-[11px] font-medium tracking-widest uppercase text-white/25 mb-3 block">
+          <span className="text-[11px] font-medium tracking-widest uppercase text-white/55 mb-3 block">
             Vilka vi är
           </span>
           <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gradient leading-tight mb-4">
@@ -229,7 +229,7 @@ export default function AboutPage() {
             <br />
             <span className="text-gradient-pink">riktiga saker för riktiga företag.</span>
           </h1>
-          <p className="text-sm text-white/40 max-w-md leading-relaxed">
+          <p className="text-sm text-white/75 max-w-md leading-relaxed">
             Avtryck Digital är Alfred och Linus. Vi startade det här för att vi ville
             göra arbete som faktiskt spelar roll — hjälpa lokala och små företag
             att synas ordentligt på nätet, utan att krångla till det.
@@ -253,7 +253,7 @@ export default function AboutPage() {
             <h3 className="text-base font-semibold text-white mb-1">
               Vill du jobba med oss?
             </h3>
-            <p className="text-sm text-white/40">
+            <p className="text-sm text-white/75">
               Vi vill gärna höra mer om ditt projekt.
             </p>
           </div>

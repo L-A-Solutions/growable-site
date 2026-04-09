@@ -123,7 +123,7 @@ export default function ServicesPage() {
           transition={{ duration: 0.4 }}
           className="mb-7"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-xs text-white/45">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-xs text-white/70">
             Vad vi gör
           </span>
         </m.div>
@@ -143,7 +143,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-sm text-white/40 max-w-sm mx-auto leading-relaxed mb-8"
+          className="text-sm text-white/75 max-w-sm mx-auto leading-relaxed mb-8"
         >
           Vi håller det enkelt. Här är exakt vad vi erbjuder, vad som ingår och
           hur vi arbetar.
@@ -191,7 +191,7 @@ export default function ServicesPage() {
                       strokeWidth={1.8}
                     />
                   </div>
-                  <span className="text-[11px] font-medium tracking-wider uppercase text-white/25">
+                  <span className="text-[11px] font-medium tracking-wider uppercase text-white/55">
                     {svc.label}
                   </span>
                 </div>
@@ -199,11 +199,11 @@ export default function ServicesPage() {
                 <h2 className="text-lg font-semibold text-white mb-3 leading-snug">
                   {svc.tagline}
                 </h2>
-                <p className="text-sm text-white/40 leading-relaxed">{svc.description}</p>
+                <p className="text-sm text-white/75 leading-relaxed">{svc.description}</p>
               </div>
 
               <div>
-                <span className="text-[11px] font-semibold tracking-wider uppercase text-white/20 mb-4 block">
+                <span className="text-[11px] font-semibold tracking-wider uppercase text-white/80 mb-4 block">
                   Vad som ingår
                 </span>
                 <ul className="flex flex-col gap-3">
@@ -214,7 +214,7 @@ export default function ServicesPage() {
                         style={{ color: svc.accent }}
                         strokeWidth={2}
                       />
-                      <span className="text-sm text-white/50">{item}</span>
+                      <span className="text-sm text-white/80">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -243,7 +243,7 @@ export default function ServicesPage() {
           <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3 leading-tight">
             Osäker på vad du behöver?
           </h2>
-          <p className="text-sm text-white/40 mb-7 max-w-xs mx-auto leading-relaxed">
+          <p className="text-sm text-white/75 mb-7 max-w-xs mx-auto leading-relaxed">
             Hör av dig. Vi tar ett snabbt samtal och räknar ut rätt startpunkt
             tillsammans.
           </p>
