@@ -6,16 +6,15 @@
   text-align: center;
   position: relative;
   isolation: isolate;
-  overflow-x: clip;
 }
 
-/* Pink cloud — bleeds into the section below for a seamless transition */
+/* Pink cloud — bleeds vertically for seamless transitions */
 .section::before {
   content: "";
   position: absolute;
-  inset: -4rem -8rem -8rem;
+  inset: -4rem 0 -8rem;
   background: radial-gradient(
-    ellipse 70% 75% at 50% 40%,
+    ellipse 100% 75% at 50% 40%,
     rgba(242, 167, 181, 0.16) 0%,
     rgba(242, 167, 181, 0.07) 50%,
     transparent 100%

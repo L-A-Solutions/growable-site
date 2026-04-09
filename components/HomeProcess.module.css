@@ -5,15 +5,14 @@
   margin-left: auto;
   margin-right: auto;
   isolation: isolate;
-  overflow-x: clip;
 }
 
 .section::before {
   content: "";
   position: absolute;
-  inset: -4rem -8rem -6rem;
+  inset: -4rem 0 -6rem;
   background: radial-gradient(
-    ellipse 70% 75% at 50% 50%,
+    ellipse 100% 75% at 50% 50%,
     rgba(242, 167, 181, 0.13) 0%,
     rgba(242, 167, 181, 0.05) 55%,
     transparent 100%
