@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Zap, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Footer.module.css";
@@ -44,7 +45,7 @@ export default function Footer() {
           <div className={styles.brand}>
             <Link href="/" className={styles.logoLink}>
               <div className={styles.logoIcon}>
-                <Zap width={14} height={14} strokeWidth={2.5} />
+                <Image src="/favicon.png" alt="Avtryck Digital" width={20} height={20} />
               </div>
               <span className={styles.logoText}>Avtryck Digital.</span>
             </Link>
