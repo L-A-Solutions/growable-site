@@ -70,7 +70,9 @@ function validate(fields: { name: string; email: string; phone: string; message:
     errors.email = "Ange en giltig e-postadress.";
   }
 
-  if (fields.phone.trim() && !/^[\d\s\-+()]{7,15}$/.test(fields.phone.trim())) {
+  if (!fields.phone.trim()) {
+    errors.phone = "Telefonnummer är obligatoriskt.";
+  } else if (!/^[\d\s\-+()]{7,15}$/.test(fields.phone.trim())) {
     errors.phone = "Ange ett giltigt telefonnummer.";
   }
 
@@ -240,7 +242,7 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="phone" className="text-xs text-white/70 font-medium">
-                  Telefonnummer <span className="text-white/35 font-normal">(valfritt)</span>
+                  Telefonnummer
                 </label>
                 <input
                   id="phone"
