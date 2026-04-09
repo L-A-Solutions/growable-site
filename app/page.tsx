@@ -1,6 +1,8 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
-import BentoGrid from "@/components/BentoGrid";
-import HomeProcess from "@/components/HomeProcess";
+
+const BentoGrid = dynamic(() => import("@/components/BentoGrid"));
+const HomeProcess = dynamic(() => import("@/components/HomeProcess"));
 
 export default function HomePage() {
   return (

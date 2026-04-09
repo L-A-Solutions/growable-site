@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -35,7 +35,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       </button>
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -43,7 +43,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             className="overflow-hidden"
           >
             <p className="text-xs text-white/60 leading-relaxed pb-3.5">{a}</p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
@@ -66,7 +66,7 @@ export default function ContactPage() {
     <div className="pt-28 pb-24 overflow-hidden">
       <div className="max-w-lg mx-auto px-4">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -82,10 +82,10 @@ export default function ContactPage() {
             Fyll i formuläret så återkommer vi till dig inom en arbetsdag för att boka in ett
             kostnadsfritt möte. Vi ser fram emot att jobba med er!
           </p>
-        </motion.div>
+        </m.div>
 
         {/* FAQ */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08 }}
@@ -97,10 +97,10 @@ export default function ContactPage() {
           {faqs.map((faq) => (
             <FaqItem key={faq.q} q={faq.q} a={faq.a} />
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Form */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.16 }}
@@ -190,7 +190,7 @@ export default function ContactPage() {
               </button>
             </form>
           )}
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

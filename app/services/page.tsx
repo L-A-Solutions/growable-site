@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Globe,
   Server,
@@ -117,7 +117,7 @@ export default function ServicesPage() {
           }}
         />
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
@@ -126,9 +126,9 @@ export default function ServicesPage() {
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-xs text-white/45">
             Vad vi gör
           </span>
-        </motion.div>
+        </m.div>
 
-        <motion.h1
+        <m.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08 }}
@@ -137,9 +137,9 @@ export default function ServicesPage() {
           Allt ditt företag behöver
           <br />
           <span className="text-gradient-pink">för att synas på nätet.</span>
-        </motion.h1>
+        </m.h1>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
@@ -147,9 +147,9 @@ export default function ServicesPage() {
         >
           Vi håller det enkelt. Här är exakt vad vi erbjuder, vad som ingår och
           hur vi arbetar.
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.22 }}
@@ -161,7 +161,7 @@ export default function ServicesPage() {
             Prata med oss
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
-        </motion.div>
+        </m.div>
       </section>
 
       {/* Service cards */}
@@ -169,7 +169,7 @@ export default function ServicesPage() {
         {services.map((svc, i) => {
           const Icon = svc.icon;
           return (
-            <motion.div
+            <m.div
               key={svc.id}
               id={svc.id}
               custom={i}
@@ -219,14 +219,14 @@ export default function ServicesPage() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </m.div>
           );
         })}
       </section>
 
       {/* Bottom CTA */}
       <section className="px-4 max-w-2xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -254,7 +254,7 @@ export default function ServicesPage() {
             Kontakta oss
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
-        </motion.div>
+        </m.div>
       </section>
     </div>
   );

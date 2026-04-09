@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
 import styles from "./Navigation.module.css";
 
@@ -42,7 +42,7 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.header
+      <m.header
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: visible ? 0 : -80, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -65,7 +65,7 @@ export default function Navigation() {
                     className={`${styles.link} ${active ? styles.linkActive : ""}`}
                   >
                     {active && (
-                      <motion.span
+                      <m.span
                         layoutId="nav-pill"
                         className={styles.activePill}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
@@ -92,12 +92,12 @@ export default function Navigation() {
             </button>
           </div>
         </nav>
-      </motion.header>
+      </m.header>
 
       {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
@@ -121,7 +121,7 @@ export default function Navigation() {
                 Kom igång
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

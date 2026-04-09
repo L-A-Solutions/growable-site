@@ -1,66 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import styles from "./Hero.module.css";
 
-
-const CROSSFADE = 1.5; // seconds before end to start crossfade
-
 export default function Hero() {
   const bgRef = useRef<HTMLDivElement>(null);
-  const vid1Ref = useRef<HTMLVideoElement>(null);
-  const vid2Ref = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Scroll fade
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      if (!bgRef.current) return;
-      const heroH = bgRef.current.parentElement?.offsetHeight ?? window.innerHeight;
-      const progress = Math.min(window.scrollY / (heroH * 0.6), 1);
-      bgRef.current.style.opacity = String(1 - progress);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const bg = bgRef.current;
+        const vid = videoRef.current;
+        if (!bg) return;
+        const heroH = bg.parentElement?.offsetHeight ?? window.innerHeight;
+        const progress = Math.min(window.scrollY / (heroH * 0.6), 1);
+        bg.style.opacity = String(1 - progress);
+        // Pause video when fully scrolled past to save GPU/CPU
+        if (vid) {
+          if (progress >= 1 && !vid.paused) vid.pause();
+          else if (progress < 1 && vid.paused) vid.play();
+        }
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Crossfade loop
-  useEffect(() => {
-    const v1 = vid1Ref.current;
-    const v2 = vid2Ref.current;
-    if (!v1 || !v2) return;
-
-    let fading = false;
-
-    const check = (e: Event) => {
-      const active = e.target as HTMLVideoElement;
-      const inactive = active === v1 ? v2 : v1;
-      if (!active.duration || fading) return;
-
-      const remaining = active.duration - active.currentTime;
-      if (remaining <= CROSSFADE) {
-        fading = true;
-        inactive.currentTime = 0;
-        inactive.play().catch(() => {});
-        inactive.style.opacity = "0.4";
-        active.style.opacity = "0";
-
-        setTimeout(() => {
-          active.pause();
-          active.currentTime = 0;
-          fading = false;
-        }, CROSSFADE * 1000 + 200);
-      }
-    };
-
-    v1.addEventListener("timeupdate", check);
-    v2.addEventListener("timeupdate", check);
-    return () => {
-      v1.removeEventListener("timeupdate", check);
-      v2.removeEventListener("timeupdate", check);
-    };
   }, []);
 
   return (
@@ -68,31 +38,19 @@ export default function Hero() {
       {/* Video background — fades out on scroll */}
       <div ref={bgRef} className={styles.videoBg}>
         <video
-          ref={vid1Ref}
+          ref={videoRef}
           className={styles.video}
           src="/bg.mp4"
           autoPlay
+          loop
           muted
           playsInline
-          style={{ opacity: 0.4 }}
-        />
-        <video
-          ref={vid2Ref}
-          className={styles.video}
-          src="/bg.mp4"
-          muted
-          playsInline
-          style={{ opacity: 0 }}
+          preload="metadata"
         />
         <div className={styles.vignette} />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={styles.content}
-      >
+      <div className={styles.contentFadeIn}>
         <div className={styles.badge}>
           <span className={styles.badgeInner}>
             <span className={styles.badgeDot} />
@@ -121,7 +79,7 @@ export default function Hero() {
           </Link>
         </div>
 
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, GraduationCap, Briefcase, Wrench, Linkedin } from "lucide-react";
@@ -27,6 +27,7 @@ const team: Person[] = [
       "Webbdesign",
       "Frontendutveckling",
       "Backendutveckling",
+      "DNS & Hosting"
       
     ],
     education: [
@@ -55,20 +56,21 @@ const team: Person[] = [
       "Webbutveckling",
       "System & Automatisering",
       "Sökmotoroptimering - Google",
+      "Behovsanalys"
       
     ],
     education: [
       {
         degree: "B.Sc Informationssystem",
         school: "Mid-Sweden University",
-        year: "2025 – nuvarande",
+        year: "2025 – nu",
       },
     ],
     experience: [
       {
         title: "",
         place: "",
-        period: "2007 – nu",
+        period: "",
         description: "",
       },
     ],
@@ -77,7 +79,7 @@ const team: Person[] = [
 
 function PersonCard({ person, index }: { person: Person; index: number }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -196,7 +198,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -213,7 +215,7 @@ export default function AboutPage() {
       />
 
       <div className="max-w-4xl mx-auto px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -232,7 +234,7 @@ export default function AboutPage() {
             göra arbete som faktiskt spelar roll — hjälpa lokala och små företag
             att synas ordentligt på nätet, utan att krångla till det.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="flex flex-col gap-5 mb-14">
           {team.map((person, i) => (
@@ -240,7 +242,7 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
@@ -262,7 +264,7 @@ export default function AboutPage() {
             Kom igång
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

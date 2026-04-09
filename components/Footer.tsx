@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Zap, ArrowUpRight } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Footer.module.css";
 
@@ -34,7 +34,7 @@ export default function Footer() {
       <div className={styles.glow} />
 
       <div className={styles.inner}>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
@@ -72,9 +72,9 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -86,7 +86,7 @@ export default function Footer() {
           <span className={styles.tagline}>
             Två studenter. Riktiga hemsidor. Schyssta priser.
           </span>
-        </motion.div>
+        </m.div>
       </div>
     </footer>
   );

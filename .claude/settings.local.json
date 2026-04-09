@@ -4,7 +4,10 @@
       "Bash(python3:*)",
       "Bash(npm --version)",
       "Bash(npm install:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(ls -lh /home/fredde1/webproject/avtryck/public/*.mp4)",
+      "Bash(dpkg -l)",
+      "Bash(apt list:*)"
     ]
   }
 }
