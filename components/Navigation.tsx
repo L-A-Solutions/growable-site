@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import styles from "./Navigation.module.css";
 
 const navLinks = [
@@ -51,6 +52,7 @@ export default function Navigation() {
         <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
+            <Image src="/favicon.png" alt="Avtryck Digital" width={24} height={24} />
             <span className={styles.logoText}>Avtryck Digital.</span>
           </Link>
 
