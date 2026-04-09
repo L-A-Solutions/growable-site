@@ -78,8 +78,8 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
       className="glass rounded-2xl overflow-hidden border border-white/8"
     >
       {/* Header */}
-      <div className="p-7 border-b border-white/6 flex items-start justify-between gap-4">
-        <div className="flex items-center gap-4">
+      <div className="p-7 border-b border-white/6 flex flex-wrap items-start justify-between gap-4">
+        <div className="flex items-center gap-4 min-w-0">
           <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 flex-shrink-0">
             <Image
               src={person.photo}
@@ -90,7 +90,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
               className="object-cover w-full h-full"
             />
           </div>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 min-w-0">
             <h2 className="text-lg font-semibold text-white tracking-tight">
               {person.name}
             </h2>
