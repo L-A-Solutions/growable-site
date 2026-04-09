@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import styles from "./Hero.module.css";
 
-const FADE_DURATION = 1.5; // seconds before end to start crossfade
+const FADE_DURATION = 2.5; // seconds before end to start crossfade
 
 export default function Hero() {
   const bgRef = useRef<HTMLDivElement>(null);
@@ -64,13 +64,11 @@ export default function Hero() {
       inactive.style.opacity = "0.4";
       active.style.opacity = "0";
 
-      const onEnded = () => {
-        active.removeEventListener("ended", onEnded);
+      setTimeout(() => {
         active.pause();
         active.currentTime = 0;
         fading = false;
-      };
-      active.addEventListener("ended", onEnded);
+      }, FADE_DURATION * 1000);
     };
 
     v1.addEventListener("timeupdate", onTimeUpdate);
