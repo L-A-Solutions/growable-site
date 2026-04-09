@@ -164,7 +164,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service cards */}
-      <section className="px-4 max-w-4xl mx-auto flex flex-col gap-2 mb-12">
+      <section className="px-4 max-w-4xl mx-auto flex flex-col gap-2 mb-16">
         {services.map((svc, i) => {
           const Icon = svc.icon;
           return (
@@ -201,6 +201,22 @@ export default function ServicesPage() {
             </m.div>
           );
         })}
+      </section>
+
+      <section className="px-4 text-center pb-24">
+        <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">
+          Osäker på vad du behöver?
+        </h2>
+        <p className="text-sm text-white/75 mb-7 max-w-xs mx-auto leading-relaxed">
+          Hör av dig. Vi tar ett snabbt samtal och räknar ut rätt startpunkt tillsammans.
+        </p>
+        <Link
+          href="/contact"
+          className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F2A7B5] text-[#0A0A0A] text-sm font-semibold hover:bg-[#E8849A] transition-colors duration-200 cursor-pointer"
+        >
+          Kontakta oss
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+        </Link>
       </section>
 
     </div>
