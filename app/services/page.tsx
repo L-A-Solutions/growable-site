@@ -19,7 +19,7 @@ const services = [
     accent: "#F2A7B5",
     tagline: "Din plats på nätet, gjord ordentligt.",
     description:
-      "Vi designar och bygger hemsidor som ser bra ut, laddar snabbt och fungerar på alla enheter. Oavsett om du behöver en enkel sida eller en fullständig flersidessajt bygger vi den från grunden — inga mallar, inga genvägar.",
+      " Vi designar och bygger hemsidor som ser bra ut, laddar snabbt och fungerar på alla enheter. Allt anpassas efter dina behov – oavsett om det gäller en enkel sida eller en mer avancerad lösning med databaser, integrationer och smart funktionalitet.",
     includes: [
       "Anpassad design utifrån ditt varumärke",
       "Mobilanpassad layout",
@@ -35,7 +35,7 @@ const services = [
     accent: "#a5f3b0",
     tagline: "Alltid online. Alltid uppdaterad.",
     description:
-      "Vi hostar din sajt på pålitlig infrastruktur och sköter allt tekniskt underhåll — säkerhetsuppdateringar, säkerhetskopior och mindre innehållsändringar. Du fokuserar på ditt företag.",
+      "Vi ansvarar för att din hemsida fungerar som den ska – idag och över tid. När något behöver justeras eller förbättras finns vi där direkt.",
     includes: [
       "Hanterad hosting",
       "SSL-certifikat ingår",
@@ -51,7 +51,7 @@ const services = [
     accent: "#93c5fd",
     tagline: "Syns när folk söker efter dig.",
     description:
-      "Vi ger din sajt en solid SEO-grund och sätter upp din Google Business-profil — det grundläggande som faktiskt gör skillnad för lokala företag som vill synas.",
+      "Vi ger din sajt en solid SEO-grund och hjälper dig att sätta upp en Google Business-profil — det grundläggande som faktiskt gör skillnad för lokala företag som vill synas.",
     includes: [
       "On-page SEO (titlar, meta, struktur)",
       "Google Business-profil setup",
@@ -67,7 +67,7 @@ const services = [
     accent: "#fcd34d",
     tagline: "Vi svarar i telefon.",
     description:
-      "Har du en fråga? Behöver du uppdatera något? Hör av dig. Vi svarar snabbt och löser saker utan att göra det krångligt. Inget ärendesystem, ingen kö — bara två personer som bryr sig.",
+      "Har du en fråga? Behöver du uppdatera något? Hör av dig. Vi svarar snabbt och löser saker utan att göra det krångligt.",
     includes: [
       "Direktkontakt via telefon, e-post eller SMS",
       "Snabba svarstider",
@@ -164,7 +164,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service cards */}
-      <section className="px-4 max-w-4xl mx-auto flex flex-col gap-4 mb-20">
+      <section className="px-4 max-w-4xl mx-auto flex flex-col gap-2 mb-12">
         {services.map((svc, i) => {
           const Icon = svc.icon;
           return (
@@ -203,38 +203,6 @@ export default function ServicesPage() {
         })}
       </section>
 
-      {/* Bottom CTA */}
-      <section className="px-4 max-w-2xl mx-auto">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.45 }}
-          className="glass rounded-2xl p-10 text-center border border-pink-door/12 relative overflow-hidden"
-        >
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(242,167,181,0.04) 0%, transparent 70%)",
-            }}
-          />
-          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3 leading-tight">
-            Osäker på vad du behöver?
-          </h2>
-          <p className="text-sm text-white/75 mb-7 max-w-xs mx-auto leading-relaxed">
-            Hör av dig. Vi tar ett snabbt samtal och räknar ut rätt startpunkt
-            tillsammans.
-          </p>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pink-door text-[#0A0A0A] text-sm font-semibold hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer"
-          >
-            Kontakta oss
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
-          </Link>
-        </m.div>
-      </section>
     </div>
   );
 }
