@@ -3,7 +3,7 @@
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, GraduationCap, Briefcase, Linkedin, Mail, Phone } from "lucide-react";
+import { ArrowRight, GraduationCap, Linkedin, Mail, Phone } from "lucide-react";
 
 type Person = {
   name: string;
@@ -21,14 +21,14 @@ const team: Person[] = [
   {
     name: "Alfred Arvidsson",
     role: "Medgrundare",
-    bio: "Alfred är en andrårsstudent vid Uppsala universitet med ett starkt intresse för kodning och problemlösning.",
+    bio: "Mitt fokus ligger på kodning och avancerad problemlösning. Med arbetslivserfarenhet av att stärka tillförlitligheten i AI-modeller utvecklar jag lösningar som är både robusta och hållbara över tid.",
     linkedin: "https://linkedin.com/in/arvidssonalfred",
     photo: "/images/alfred_crop.JPG",
     email: "alfred@avtryckdigital.se",
     phone: "070 338 85 30",
     education: [
       {
-        degree: "B.Sc Informationssystem",
+        degree: "B.Sc Informationssystems",
         school: "Uppsala universitet",
         year: "2024 – nu",
       },
@@ -45,14 +45,14 @@ const team: Person[] = [
   {
     name: "Linus Kammonen",
     role: "Medgrundare",
-    bio: "Uppdatera detta med en kort introduktion om dig själv — vad du brinner för, vad du bidrar med till Avtryck Digital och vilken typ av arbete som engagerar dig.",
+    bio: "Jag gillar att förenkla det komplexa. Genom att kombinera AI, modern teknik och beprövade metoder skapar jag lösningar som är smarta, effektiva och enkla att använda.",
     linkedin: "https://linkedin.com/in/linus-kammonen-42101314b",
     photo: "/images/linus_crop.JPG",
     email: "linus@avtryckdigital.se",
     phone: "070 992 79 65",
     education: [
       {
-        degree: "B.Sc Informationssystem",
+        degree: "B.Sc Informationssystems",
         school: "Mid-Sweden University",
         year: "2025 – nu",
       },
@@ -156,34 +156,6 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
             </div>
           </div>
 
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Briefcase className="w-3.5 h-3.5 text-white/55" strokeWidth={1.8} />
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-white/55">
-                Erfarenhet
-              </span>
-            </div>
-            <div className="flex flex-col gap-4">
-              {person.experience.map((exp, i) => (
-                <div key={i}>
-                  <div className="flex items-start justify-between gap-4 mb-1">
-                    <div>
-                      <p className="text-sm font-medium text-white/70">{exp.title}</p>
-                      <p className="text-xs text-white/65">{exp.place}</p>
-                    </div>
-                    <span className="text-[11px] text-white/55 flex-shrink-0 mt-0.5">
-                      {exp.period}
-                    </span>
-                  </div>
-                  {exp.description && (
-                    <p className="text-xs text-white/65 leading-relaxed mt-1.5">
-                      {exp.description}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </m.div>
@@ -242,7 +214,7 @@ Det gör att vi kan bygga moderna, hållbara lösningar som ger våra kunder ett
               Vill du jobba med oss?
             </h3>
             <p className="text-sm text-white/75">
-              Vi vill gärna höra mer om ditt projekt.
+              boka in ett kostnadsfritt möte idag.
             </p>
           </div>
           <Link
