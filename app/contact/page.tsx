@@ -50,17 +50,95 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+type FormErrors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+};
+
+function validate(fields: { name: string; email: string; phone: string; message: string }): FormErrors {
+  const errors: FormErrors = {};
+
+  if (!fields.name.trim()) {
+    errors.name = "Namn är obligatoriskt.";
+  }
+
+  if (!fields.email.trim()) {
+    errors.email = "E-post är obligatorisk.";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
+    errors.email = "Ange en giltig e-postadress.";
+  }
+
+  if (fields.phone.trim() && !/^[\d\s\-+()]{7,15}$/.test(fields.phone.trim())) {
+    errors.phone = "Ange ett giltigt telefonnummer.";
+  }
+
+  if (!fields.message.trim()) {
+    errors.message = "Meddelande är obligatoriskt.";
+  }
+
+  return errors;
+}
+
+function FieldError({ msg }: { msg?: string }) {
+  return (
+    <AnimatePresence initial={false}>
+      {msg && (
+        <m.p
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.15 }}
+          className="text-[11px] text-[#F2A7B5] mt-1"
+        >
+          {msg}
+        </m.p>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [fields, setFields] = useState({ name: "", email: "", phone: "", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    const updated = { ...fields, [id]: value };
+    setFields(updated);
+    if (touched[id]) {
+      setErrors(validate(updated));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id } = e.target;
+    setTouched((prev) => ({ ...prev, [id]: true }));
+    setErrors(validate(fields));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setTouched({ name: true, email: true, phone: true, message: true });
+    const errs = validate(fields);
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) return;
     setLoading(true);
     await new Promise((r) => setTimeout(r, 1000));
     setLoading(false);
     setSubmitted(true);
   };
+
+  const inputClass = (field: keyof FormErrors) =>
+    `px-4 py-2.5 rounded-xl bg-white/[0.06] border text-sm text-white placeholder:text-white/30 focus:outline-none transition-colors duration-200 ${
+      touched[field] && errors[field]
+        ? "border-[#F2A7B5]/60 focus:border-[#F2A7B5]"
+        : "border-white/15 focus:border-white/30"
+    }`;
 
   return (
     <div className="pt-28 pb-24 overflow-hidden">
@@ -128,6 +206,7 @@ export default function ContactPage() {
           ) : (
             <form
               onSubmit={handleSubmit}
+              noValidate
               className="glass rounded-2xl p-7 flex flex-col gap-5 border border-white/15"
             >
               <div className="grid sm:grid-cols-2 gap-4">
@@ -136,20 +215,26 @@ export default function ContactPage() {
                   <input
                     id="name"
                     type="text"
-                    required
+                    value={fields.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Sara"
-                    className="px-4 py-2.5 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors duration-200"
+                    className={inputClass("name")}
                   />
+                  <FieldError msg={touched.name ? errors.name : undefined} />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="email" className="text-xs text-white/70 font-medium">E-post</label>
                   <input
                     id="email"
                     type="email"
-                    required
+                    value={fields.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="sara@dittforetag.se"
-                    className="px-4 py-2.5 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors duration-200"
+                    className={inputClass("email")}
                   />
+                  <FieldError msg={touched.email ? errors.email : undefined} />
                 </div>
               </div>
 
@@ -160,20 +245,31 @@ export default function ContactPage() {
                 <input
                   id="phone"
                   type="tel"
+                  value={fields.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="070 000 00 00"
-                  className="px-4 py-2.5 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors duration-200"
+                  className={inputClass("phone")}
                 />
+                <FieldError msg={touched.phone ? errors.phone : undefined} />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="message" className="text-xs text-white/70 font-medium">Berätta lite mer</label>
                 <textarea
                   id="message"
-                  required
+                  value={fields.message}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   rows={4}
                   placeholder="Ditt meddelande..."
-                  className="px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors duration-200 resize-none leading-relaxed"
+                  className={`px-4 py-3 rounded-xl bg-white/[0.06] border text-sm text-white placeholder:text-white/30 focus:outline-none transition-colors duration-200 resize-none leading-relaxed ${
+                    touched.message && errors.message
+                      ? "border-[#F2A7B5]/60 focus:border-[#F2A7B5]"
+                      : "border-white/15 focus:border-white/30"
+                  }`}
                 />
+                <FieldError msg={touched.message ? errors.message : undefined} />
               </div>
 
               <button
