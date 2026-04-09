@@ -126,7 +126,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
         </a>
       </div>
 
-      <div className="p-7 grid md:grid-cols-2 gap-8">
+      <div className="p-7 flex flex-col gap-7">
         {/* Left */}
         <div>
           <p className="text-sm text-white/70 leading-relaxed">{person.bio}</p>
@@ -224,7 +224,7 @@ Det gör att vi kan bygga moderna, hållbara lösningar som ger våra kunder ett
           </p>
         </m.div>
 
-        <div className="flex flex-col gap-5 mb-14">
+        <div className="grid md:grid-cols-2 gap-5 mb-14">
           {team.map((person, i) => (
             <PersonCard key={person.name} person={person} index={i} />
           ))}
