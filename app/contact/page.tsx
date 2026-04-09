@@ -154,13 +154,13 @@ export default function ContactPage() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="business" className="text-xs text-white/70 font-medium">
-                  Företagsnamn <span className="text-white/35 font-normal">(valfritt)</span>
+                <label htmlFor="phone" className="text-xs text-white/70 font-medium">
+                  Telefonnummer <span className="text-white/35 font-normal">(valfritt)</span>
                 </label>
                 <input
-                  id="business"
-                  type="text"
-                  placeholder="Saras Bageri"
+                  id="phone"
+                  type="tel"
+                  placeholder="070 000 00 00"
                   className="px-4 py-2.5 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors duration-200"
                 />
               </div>
@@ -171,7 +171,7 @@ export default function ContactPage() {
                   id="message"
                   required
                   rows={4}
-                  placeholder="Vi driver ett litet café och behöver en enkel hemsida med meny, öppettider och ett kontaktformulär..."
+                  placeholder="Ditt meddelande..."
                   className="px-4 py-3 rounded-xl bg-white/[0.06] border border-white/15 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors duration-200 resize-none leading-relaxed"
                 />
               </div>
