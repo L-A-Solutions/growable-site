@@ -8,13 +8,17 @@
   isolation: isolate;
 }
 
-/* Pink cloud — bleeds vertically for seamless transitions */
+/* Pink cloud — full viewport width, centered on section */
 .section::before {
   content: "";
   position: absolute;
-  inset: -4rem 0 -8rem;
+  top: -4rem;
+  bottom: -8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   background: radial-gradient(
-    ellipse 100% 75% at 50% 40%,
+    ellipse 60% 75% at 50% 40%,
     rgba(242, 167, 181, 0.16) 0%,
     rgba(242, 167, 181, 0.07) 50%,
     transparent 100%
