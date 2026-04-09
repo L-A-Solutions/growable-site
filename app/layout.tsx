@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Vi designar och bygger snabba, professionella hemsidor för småföretag. Hosting, support och synlighet på nätet ingår. Baserade i Sverige.",
   keywords: ["webbdesign", "hemsida småföretag", "webbdesign Sverige", "hosting", "synlighet på nätet"],
   icons: {
-    icon: { url: "/favicon.svg", type: "image/svg+xml" },
+    icon: { url: "/favicon.png", type: "image/png" },
   },
   openGraph: {
     type: "website",
