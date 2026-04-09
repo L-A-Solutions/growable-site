@@ -144,14 +144,6 @@ export default function ContactPage() {
 
   return (
     <div className="pt-28 pb-24 overflow-hidden">
-      <div
-        className="pointer-events-none fixed inset-x-0 top-0 h-[400px] -z-10"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, rgba(242,167,181,0.09) 0%, transparent 70%)",
-        }}
-      />
       <div className="max-w-lg mx-auto px-4">
         {/* Header */}
         <m.div
@@ -277,7 +269,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="group flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#F2A7B5] text-[#0A0A0A] text-sm font-semibold hover:bg-[#E8849A] transition-colors duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                className="group flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-pink-door text-[#0A0A0A] text-sm font-semibold hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>

@@ -108,13 +108,6 @@ export default function ServicesPage() {
     <div className="pt-28 pb-24 overflow-hidden">
       {/* Page hero */}
       <section className="px-4 max-w-4xl mx-auto text-center mb-20">
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[400px] -z-10"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 0%, rgba(242,167,181,0.09) 0%, transparent 70%)",
-          }}
-        />
 
         <m.div
           initial={{ opacity: 0, y: 12 }}
@@ -212,7 +205,7 @@ export default function ServicesPage() {
         </p>
         <Link
           href="/contact"
-          className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F2A7B5] text-[#0A0A0A] text-sm font-semibold hover:bg-[#E8849A] transition-colors duration-200 cursor-pointer"
+          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-door text-[#0A0A0A] text-sm font-semibold hover:bg-pink-door-dark transition-colors duration-200 cursor-pointer"
         >
           Kontakta oss
           <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />

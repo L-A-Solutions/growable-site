@@ -125,9 +125,9 @@ export default function Hero() {
         </p>
 
         <div className={styles.ctas}>
-          <Link href="/contact" className={styles.ctaPrimary}>
+          <Link href="/contact" className={`${styles.ctaPrimary} group`}>
             Bli kontaktad
-            <ArrowRight width={16} height={16} />
+            <ArrowRight width={16} height={16} className="group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
           <Link href="/services" className={styles.ctaSecondary}>
             Vad vi gör
