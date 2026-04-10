@@ -1,8 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      render: (el: HTMLElement, opts: { sitekey: string; theme?: string; callback?: (token: string) => void }) => number;
+      reset: (id?: number) => void;
+    };
+  }
+}
 
 const faqs = [
   {
@@ -107,6 +117,39 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [fields, setFields] = useState({ name: "", email: "", phone: "", message: "" });
+  const [recaptchaToken, setRecaptchaToken] = useState("");
+  const recaptchaRef = useRef<HTMLDivElement>(null);
+  const recaptchaWidgetId = useRef<number | null>(null);
+
+  const onRecaptcha = useCallback((token: string) => {
+    setRecaptchaToken(token);
+  }, []);
+
+  useEffect(() => {
+    const sitekey = process.env.NEXT_PUBLIC_SITE_RECAPTCHA_KEY;
+    if (!sitekey) return;
+
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
+    script.async = true;
+    script.defer = true;
+
+    (window as unknown as Record<string, unknown>).onRecaptchaLoad = () => {
+      if (recaptchaRef.current && recaptchaWidgetId.current === null) {
+        recaptchaWidgetId.current = window.grecaptcha.render(recaptchaRef.current, {
+          sitekey,
+          theme: "dark",
+          callback: onRecaptcha,
+        });
+      }
+    };
+
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+      delete (window as unknown as Record<string, unknown>).onRecaptchaLoad;
+    };
+  }, [onRecaptcha]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -129,10 +172,33 @@ export default function ContactPage() {
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
+    if (process.env.NEXT_PUBLIC_SITE_RECAPTCHA_KEY && !recaptchaToken) {
+      setErrors({ message: "Vänligen bekräfta att du inte är en robot." });
+      return;
+    }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const body = new URLSearchParams({
+        "form-name": "contact",
+        ...fields,
+        ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
+      });
+      const res = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error("Submit failed");
+      setSubmitted(true);
+    } catch {
+      setErrors({ message: "Något gick fel. Försök igen." });
+      setRecaptchaToken("");
+      if (recaptchaWidgetId.current !== null) {
+        window.grecaptcha?.reset(recaptchaWidgetId.current);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass = (field: keyof FormErrors) =>
@@ -199,10 +265,20 @@ export default function ContactPage() {
             </div>
           ) : (
             <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               noValidate
               className="glass rounded-2xl p-7 flex flex-col gap-5 border border-white/15"
             >
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  <input name="bot-field" />
+                </label>
+              </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="name" className="text-xs text-white/70 font-medium">Ditt namn</label>
@@ -265,6 +341,10 @@ export default function ContactPage() {
                 />
                 <FieldError msg={touched.message ? errors.message : undefined} />
               </div>
+
+              {process.env.NEXT_PUBLIC_SITE_RECAPTCHA_KEY && (
+                <div ref={recaptchaRef} className="flex justify-center" />
+              )}
 
               <button
                 type="submit"

@@ -50,7 +50,7 @@ export default function Footer() {
               <span className={styles.logoText}>Avtryck Digital.</span>
             </Link>
             <p className={styles.brandDesc}>
-              Webbdesign, hosting och synlighet för småföretag.
+              Webbdesign, hosting och synlighet för företag.
             </p>
             <Link href="/contact" className={styles.brandCta}>
               Starta ett projekt
