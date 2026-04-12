@@ -91,6 +91,7 @@ export default function Hero() {
           muted
           playsInline
           preload="metadata"
+          poster="/bg-poster.webp"
           style={{ opacity: 0.4 }}
         />
         <video
