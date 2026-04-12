@@ -1,18 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
-
-declare global {
-  interface Window {
-    grecaptcha: {
-      ready: (cb: () => void) => void;
-      render: (el: HTMLElement, opts: { sitekey: string; theme?: string; callback?: (token: string) => void }) => number;
-      reset: (id?: number) => void;
-    };
-  }
-}
 
 const faqs = [
   {
@@ -117,39 +107,6 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [fields, setFields] = useState({ name: "", email: "", phone: "", message: "" });
-  const [recaptchaToken, setRecaptchaToken] = useState("");
-  const recaptchaRef = useRef<HTMLDivElement>(null);
-  const recaptchaWidgetId = useRef<number | null>(null);
-
-  const onRecaptcha = useCallback((token: string) => {
-    setRecaptchaToken(token);
-  }, []);
-
-  useEffect(() => {
-    const sitekey = process.env.NEXT_PUBLIC_SITE_RECAPTCHA_KEY;
-    if (!sitekey) return;
-
-    const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
-    script.async = true;
-    script.defer = true;
-
-    (window as unknown as Record<string, unknown>).onRecaptchaLoad = () => {
-      if (recaptchaRef.current && recaptchaWidgetId.current === null) {
-        recaptchaWidgetId.current = window.grecaptcha.render(recaptchaRef.current, {
-          sitekey,
-          theme: "dark",
-          callback: onRecaptcha,
-        });
-      }
-    };
-
-    document.head.appendChild(script);
-    return () => {
-      document.head.removeChild(script);
-      delete (window as unknown as Record<string, unknown>).onRecaptchaLoad;
-    };
-  }, [onRecaptcha]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -172,16 +129,11 @@ export default function ContactPage() {
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    if (process.env.NEXT_PUBLIC_SITE_RECAPTCHA_KEY && !recaptchaToken) {
-      setErrors({ message: "Vänligen bekräfta att du inte är en robot." });
-      return;
-    }
     setLoading(true);
     try {
       const body = new URLSearchParams({
         "form-name": "contact",
         ...fields,
-        ...(recaptchaToken ? { "g-recaptcha-response": recaptchaToken } : {}),
       });
       const res = await fetch("/__forms.html", {
         method: "POST",
@@ -192,10 +144,6 @@ export default function ContactPage() {
       setSubmitted(true);
     } catch {
       setErrors({ message: "Något gick fel. Försök igen." });
-      setRecaptchaToken("");
-      if (recaptchaWidgetId.current !== null) {
-        window.grecaptcha?.reset(recaptchaWidgetId.current);
-      }
     } finally {
       setLoading(false);
     }
@@ -341,10 +289,6 @@ export default function ContactPage() {
                 />
                 <FieldError msg={touched.message ? errors.message : undefined} />
               </div>
-
-              {process.env.NEXT_PUBLIC_SITE_RECAPTCHA_KEY && (
-                <div ref={recaptchaRef} className="flex justify-center" />
-              )}
 
               <button
                 type="submit"

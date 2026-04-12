@@ -21,8 +21,8 @@ const links = {
     { label: "Support", href: "/services#support" },
   ],
   Juridiskt: [
-    { label: "Integritetspolicy", href: "#" },
-    { label: "Villkor", href: "#" },
+    { label: "Integritetspolicy", href: "/integritetspolicy" },
+    { label: "Villkor", href: "/villkor" },
   ],
 };
 
